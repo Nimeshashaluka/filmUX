@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="bootstrap.css" />
     <link rel="stylesheet" href="signUp&in.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" href="images/FUX.png" />
 
     <title>Sign In Page</title>
 </head>
@@ -31,7 +32,6 @@
                     <div class="card border-1 border-danger text-light "
                         style="border-radius: 1rem; background-color: rgba(0, 0, 0, 0.8);">
                         <div class="card-body p-5 text-center">
-
 
                             <div class="mb-md-5 mt-md-4 pb-5">
                                 <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
@@ -108,15 +108,7 @@
                                         <button class="btn btn-warning" id="ntp" type="button" onclick="showPassword1();">Show</button>
                                     </div>
                                 </div>
-
-                                <!-- <div class="col-6">
-                                    <label class="form-label">Re-Type Password</label>
-                                    <div class="input-group mb-3">
-                                        <input type="password" class="form-control" id="rePassword"/>
-                                        <button class="btn btn-outline-secondary" type="button">Show</button>
-                                    </div>
-                                </div> -->
-
+                                
                                 <div class="col-12">
                                     <label class="form-label">Verification Code</label>
                                     <input type="text" class="form-control" id="vecode"/>

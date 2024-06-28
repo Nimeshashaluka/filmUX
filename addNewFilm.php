@@ -18,6 +18,8 @@ if (isset($_SESSION["u"])) {
         <link rel="stylesheet" href="bootstrap.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <title>Add New Film</title>
+        <link rel="icon" href="images/FUX.png" />
+
     </head>
 
     <body style="background-color: black;">
@@ -71,10 +73,12 @@ if (isset($_SESSION["u"])) {
                                     <label for="validationDefault03" class="form-label">Date</label>
                                     <input type="text" class="form-control" id="date" required placeholder="Date">
                                 </div>
-
+                                <!-- newfilmimg -->
+                                 
                                 <div class="col-3">
                                     <label for="validationDefault03" class="form-label">Image</label>
-                                    <input type="file" class="form-control" id="img" name="profile_picture" required placeholder="Film Image">
+                                    <input type="file" class="form-control" id="newfilmimg" required
+                                        placeholder="Film Image">
                                 </div>
  
                                 <div class="col-6">

@@ -90,7 +90,7 @@
                             <hr class="mb-4 mt-0 d-inline-block mx-auto"
                                 style="width: 30%; background-color: #7c4dff; height: 2px" />
                             <p><i class="bi bi-geo-alt btn-outline-danger"></i> Sri Lanka,Colombo 10</p>
-                            <p><i class="bi bi-envelope btn-outline-danger"></i> info.filmux@gmail.com</p>
+                            <p><i class="bi bi-envelope btn-outline-danger"></i> filmux.lk@gmail.com</p>
                             <p><i class="bi bi-telephone btn-outline-danger"></i> + 01 234 567 88</p>
                             <p><i class="bi bi-telephone btn-outline-danger"></i>+ 01 234 567 89</p>
                         </div>

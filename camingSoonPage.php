@@ -13,6 +13,8 @@ session_start();
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="bootstrap.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" href="images/FUX.png" />
+
     <title>ComingSoon Page</title>
 </head>
 
@@ -33,7 +35,7 @@ session_start();
 
                             <?php
 
-                            $film_rs = Database::search("SELECT * FROM `coming_soon`");
+                            $film_rs = Database::search("SELECT * FROM `coming_soon` WHERE `status_status_id`='1'");
 
                             $film_num = $film_rs->num_rows;
 

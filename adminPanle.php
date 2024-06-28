@@ -19,6 +19,8 @@ if (isset($_SESSION["u"])) {
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="bootstrap.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="icon" href="images/FUX.png" />
+
         <title>Admin Panle</title>
     </head>
 
@@ -42,6 +44,16 @@ if (isset($_SESSION["u"])) {
                         <div class="row">
                             <div class="col-12 col-lg-3 text-center bg-dark">
                                 <h2 class="logo-name p-4">FILM <span>U</span>X</h2>
+
+                                <div class="col-12 d-none"
+                                    style="position: absolute; display:flex; align-items: end; justify-content: end;"
+                                    id="msgdiv3">
+                                    <div class="col-12">
+                                        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="msg3">
+
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <nav class="nav flex-column gap-5 p-4"
                                     style="display: flex; align-items: center; justify-content: center;">
@@ -92,29 +104,44 @@ if (isset($_SESSION["u"])) {
 
                             <div class="col-12 col-lg-9 bg-light">
                                 <div class="col-12 mt-4 p-4 bg-dark">
-                                    <nav class="nav flex-row gap-5 p-2">
+                                    <nav class="nav flex-row gap-5 p-2 justify-content-center">
 
                                         <!-- //count case ek -->
 
+                                        <div class="col">
+                                            <button type="button" class="border-danger border-3 bg-dark text-light px-3"
+                                                onclick="allFilm();"
+                                                style=" height: 15vh; font-size: 24px; font-weight: 700;">Film Details
+                                                <!-- <span class="text-light">22</span> -->
+                                            </button>
+                                        </div>
 
-                                        <button type="button" class="border-danger border-3 bg-dark text-light" onclick="allFilm();"
-                                            style="width: 30%; height: 15vh; font-size: 24px; font-weight: 700;">Film
-                                            <!-- <span class="text-light">22</span> -->
-                                        </button>
+                                        <div class="col">
+                                            <button type="button" class="border-danger border-3 bg-dark text-light px-3"
+                                                onclick="allUserDetails();"
+                                                style="height: 15vh; font-size: 24px; font-weight: 700;">Users
+                                                Details
+                                                <!-- <span class="text-light">50</span> -->
+                                            </button>
+                                        </div>
 
-                                        <button type="button" class="border-danger border-3 bg-dark text-light" onclick="allUserDetails();"
-                                            style="width: 30%; height: 15vh; font-size: 24px; font-weight: 700;">Users Details
-                                            <!-- <span class="text-light">50</span> -->
-                                        </button>
-                                        <button type="button" class="border-danger border-3 bg-dark text-light" onclick="allCamingSoonFilm();"
-                                            style="width: 30%; height: 15vh; font-size: 24px; font-weight: 700;">Coming Soon
-                                            <!-- <span class="text-light">50</span> -->
-                                        </button>
-                                        <button type="button" class="border-danger border-3 bg-dark text-light" onclick="allPaymentDetails();"
-                                            style="width: 30%; height: 15vh; font-size: 24px; font-weight: 700;">Payment Details
-                                            <!-- <span class="text-light">40</span> -->
+                                        <div class="col">
+                                            <button type="button" class="border-danger border-3 bg-dark text-light px-3"
+                                                onclick="allCamingSoonFilm();"
+                                                style="height: 15vh; font-size: 24px; font-weight: 700;">Coming Soon
+                                                <!-- <span class="text-light">50</span> -->
+                                            </button>
+                                        </div>
 
-                                        </button>
+                                        <div class="col">
+                                            <button type="button" class="border-danger border-3 bg-dark text-light fs-4 px-3"
+                                                onclick="allPaymentDetails();"
+                                                style="height: 15vh; font-weight: 700;">Payment Details
+                                            </button>
+                                        </div>
+
+
+                        
                                     </nav>
 
                                 </div>
@@ -128,51 +155,58 @@ if (isset($_SESSION["u"])) {
                                         <nav class="navbar">
                                             <div class="container-fluid">
                                                 <a class="navbar-brand"></a>
-                                                <form class="d-flex" role="search">
-                                                    <input class="form-control me-2" type="search" placeholder="Search"
-                                                        aria-label="Search">
-                                                    <button class="btn btn-success" type="submit">Search</button>
-                                                </form>
+                                                <div class="d-flex">
+                                                    <input class="form-control me-2" id="userSearch" type="search"
+                                                        placeholder="Search" aria-label="Search">
+                                                    <button class="btn btn-success" onclick="userSearchBtn();">Search</button>
+                                                </div>
                                             </div>
                                         </nav>
+                                        <div class="col-12" id="userSearchResult">
+                                            <div class="row">
+                                                <table class="col-6 col-lg-12 col-md-12 table table-bordered text-center">
 
-                                        <table class="col-6 col-lg-12 col-md-12 table table-bordered text-center">
+                                                    <tr class="bg-dark text-light">
+                                                        <td>Email</td>
+                                                        <td>First Name</td>
+                                                        <td>Last Name</td>
+                                                        <td>Mobile</td>
+                                                        <td>User</td>
+                                                    </tr>
 
-                                            <tr class="bg-dark text-light">
-                                                <td>Email</td>
-                                                <td>First Name</td>
-                                                <td>Last Name</td>
-                                                <td>Mobile</td>
-                                                <td>User</td>
-                                            </tr>
+                                                    <?php
+                                                    $userData_rs = Database::search("SELECT * FROM `user` ORDER BY `uid` DESC");
+                                                    $user_num = $userData_rs->num_rows;
 
-                                            <?php
-                                            $userData_rs = Database::search("SELECT * FROM `user`");
-                                            // $userData_num = $userData_rs->num_rows;             
-                                            while ($row = mysqli_fetch_assoc($userData_rs)) {
+                                                    for ($x = 0; $x < $user_num; $x++) {
+                                                        $select_data = $userData_rs->fetch_assoc();
 
-                                                ?>
-                                                <tr>
-                                                    <th><?php echo $row["email"]; ?></th>
-                                                    <th><?php echo $row["fname"]; ?></th>
-                                                    <th><?php echo $row["lname"]; ?></th>
-                                                    <th><?php echo $row["number"]; ?></th>
-                                                    <td>
-                                                        <a href="" class="link-dark">
-                                                            <i class="bi bi-person-bounding-box fs-4 text-break"></i>
-                                                        </a>
+                                                        ?>
+                                                        <tr>
+                                                            <th><?php echo $select_data["email"]; ?></th>
+                                                            <th><?php echo $select_data["fname"]; ?></th>
+                                                            <th><?php echo $select_data["lname"]; ?></th>
+                                                            <th><?php echo $select_data["number"]; ?></th>
+                                                            <td>
+                                                                <a href="" class="link-dark">
+                                                                    <i class="bi bi-person-bounding-box fs-4 text-break"></i>
+                                                                </a>
 
 
-                                                    </td>
-                                                </tr>
+                                                            </td>
+                                                        </tr>
 
-                                                <?php
-                                            }
+                                                        <?php
+                                                    }
 
-                                            ?>
+                                                    ?>
 
-                                            </tbody>
-                                        </table>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+                                        </div>
 
                                     </div>
 

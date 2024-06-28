@@ -17,6 +17,8 @@ if (isset($_SESSION["u"])) {
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="bootstrap.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="icon" href="images/FUX.png" />
+
         <title>All WishList</title>
     </head>
 
@@ -56,7 +58,7 @@ if (isset($_SESSION["u"])) {
                                         <th><?php echo $row["date"]; ?></th>
                                         <th><?php echo $row["email"]; ?></th>
                                         <th><?php echo $row["title"]; ?></th>
-<!-- 
+                                        <!-- 
                                         <td>
                                             <a href="" class="link-dark">
                                                 <i class="bi bi-pencil-square fs-4 me-3 text-primary"></i>
@@ -76,7 +78,8 @@ if (isset($_SESSION["u"])) {
                                 </tbody>
                             </table>
                             <div class="row align-content-end justify-content-end">
-                                <button type="button" class="btn btn-danger btn-lg col-3" onclick="adminDashborad();">Dashborad</button>
+                                <button type="button" class="btn btn-danger btn-lg col-3"
+                                    onclick="adminDashborad();">Dashborad</button>
 
                             </div>
                         </div>

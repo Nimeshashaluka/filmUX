@@ -17,6 +17,8 @@ if (isset($_SESSION["u"])) {
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="bootstrap.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="icon" href="images/FUX.png" />
+
         <title>FILM DETAILS</title>
     </head>
 
@@ -86,7 +88,8 @@ if (isset($_SESSION["u"])) {
                                             <td><?php echo $select_data["view_link"]; ?></td>
 
                                             <td>
-                                                <button type="button" class="btn btn-primary" onclick="changeUpdateFile(<?php echo $select_data['id'];?>);">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="changeUpdateFilm(<?php echo $select_data['id']; ?>);">
                                                     <i class="bi bi-pencil-square fs-3 text-light"></i>
                                                 </button>
                                             </td>
@@ -122,7 +125,7 @@ if (isset($_SESSION["u"])) {
                             </table>
 
                         </div>
-                       
+
 
                         <div class="row align-content-end justify-content-end p-3">
                             <button type="button" class="btn btn-danger btn-lg col-3"

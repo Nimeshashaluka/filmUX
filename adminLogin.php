@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap.css" />
     <link rel="stylesheet" href="signUp&in.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" href="images/FUX.png" />
 
-    <title>Admin Login</title>
+    <title>Admin LogIn Page</title>
 </head>
 
 <body class="body-img">
 
-    <div class="col-12 d-none" style="position: absolute;display:flex; align-items: end; justify-content: end;"
+    <div class="col-12 d-none" style="position: absolute; display:flex; align-items: end; justify-content: end;"
         id="msgdiv3">
         <div class="col-12">
             <div class="alert alert-warning alert-dismissible fade show" role="alert" id="msg3">
@@ -33,49 +35,89 @@
 
 
                             <div class="mb-md-5 mt-md-4 pb-5">
-                                <h2 class="fw-bold mb-2 text-uppercase">Admin Login</h2>
-                                <p class="text-white-50 mb-5">Please enter your email and password!</p>
+                                <h2 class="fw-bold mb-2 text-uppercase">Admin LogIn</h2>
+                                <p class="text-white-50 mb-5">Please Enter Your Email and Password!</p>
 
                                 <?php
 
-                                $email3 = "";
-                                $password3 = "";
+                                $email = "";
+                                $password = "";
 
-                                if (isset($_COOKIE["user_name"])) {
-                                    $email3 = $_COOKIE["user_name"];
+                                if (isset($_COOKIE["email"])) {
+                                    $email = $_COOKIE["email"];
                                 }
                                 if (isset($_COOKIE["password"])) {
-                                    $password3 = $_COOKIE["password"];
+                                    $password = $_COOKIE["password"];
                                 }
 
                                 ?>
 
                                 <div data-mdb-input-init class="form-outline form-white">
-                                    <input type="email" id="email3" class="form-control form-control-sm"
+                                    <input type="email" id="email2" class="form-control form-control-sm"
                                         placeholder="Email" />
                                     <label class="form-label" for="typeEmailX"></label>
                                 </div>
 
                                 <div data-mdb-input-init class="form-outline form-white">
-                                    <input type="password" id="password3" class="form-control form-control-sm"
+                                    <input type="password" id="password2" class="form-control form-control-sm"
                                         placeholder="Password" />
                                     <label class="form-label" for="typePasswordX"></label>
                                 </div>
 
-                                <p class="small mb-1 pb-lg-2"><a class="text-white-50" href="#!">Forgot Password?</a>
+                                <div class="col-4 col-md-5">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="rememberme" />
+                                        <label class="form-check-label text-start text-white-30">Remember Me</label>
+                                    </div>
+                                </div>
+
+                                <p class="small mb-1 pb-lg-2"><a class="text-white-50" href="#!"
+                                        onclick="adforgotPassword();">Forgot Password?</a>
                                 </p>
 
                                 <button data-mdb-button-init data-mdb-ripple-init
                                     class="btn btn-outline-danger btn-lg px-5" type="submit"
-                                    onclick="adminLogin();">Login</button>
-
-                                    
-
+                                    onclick="adlogin();">Login</button>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="modal" tabindex="-1" id="forgotPasswordAlert">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h5 class="modal-title">Forgot Password</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row g-3">
+
+                                <div class="col-12">
+                                    <label class="form-label">New Password</label>
+                                    <div class="input-group mb-3">
+                                        <input type="password" class="form-control" id="tfp"/>
+                                        <button class="btn btn-warning" id="ntp" type="button" onclick="adshowPassword();">Show</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <label class="form-label">Verification Code</label>
+                                    <input type="text" class="form-control" id="vecode"/>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-success" onclick="adsavePassword();">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </section>
 

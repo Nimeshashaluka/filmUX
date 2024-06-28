@@ -17,6 +17,8 @@ if (isset($_SESSION["u"])) {
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="bootstrap.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="icon" href="images/FUX.png" />
+
         <title>CAMING SOON FILM DETAILS</title>
     </head>
 
@@ -41,6 +43,7 @@ if (isset($_SESSION["u"])) {
                             <table class="col-6 col-lg-12 col-md-12 table table-bordered text-center text-light">
 
                                 <tr class="bg-dark text-light">
+                                    <td>Film ID</td>
                                     <td>Film Title</td>
                                     <td>Release Year</td>
                                     <td>Film Image Path</td>
@@ -49,29 +52,38 @@ if (isset($_SESSION["u"])) {
 
                                 <?php
                                 $userData_rs = Database::search("SELECT * FROM `coming_soon`");
-                                while ($row = mysqli_fetch_assoc($userData_rs)) {
+                                $user_num = $userData_rs->num_rows;
 
+                                for ($x = 0; $x < $user_num; $x++) {
+                                    $select_data = $userData_rs->fetch_assoc();
                                     ?>
                                     <tr>
-                                        <th><?php echo $row["title"]; ?></th>
-                                        <th><?php echo $row["date"]; ?></th>
-                                        <th><?php echo $row["img_path"]; ?></th>
-                                        <th>
+                                        <th><?php echo $select_data["id"]; ?></th>
+                                        <th><?php echo $select_data["title"]; ?></th>
+                                        <th><?php echo $select_data["date"]; ?></th>
+                                        <th><?php echo $select_data["img_path"]; ?></th>
 
+                                        <td>
+                                            <button type="button" class="btn btn-primary"
+                                                onclick="changeComingSoonUpdateFilm(<?php echo $select_data['id']; ?>);">
+                                                <i class="bi bi-pencil-square fs-3 text-light"></i>
+                                            </button>
+                                        </td>
+
+                                        <th>
                                             <?php
 
-                                            if ($row["status_status_id"] == 1) {
+                                            if ($select_data["status_status_id"] == 1) {
                                                 ?>
-                                                <button id="ub<?php echo $row['id']; ?>" class="btn btn-danger"
-                                                    onclick="blockComingSoonFilm(<?php echo $row['id']; ?>);">Block</button>
+                                                <button id="ub<?php echo $select_data['id']; ?>" class="btn btn-danger"
+                                                    onclick="blockComingSoonFilm(<?php echo $select_data['id']; ?>);">Block</button>
                                                 <?php
                                             } else {
                                                 ?>
-                                                <button id="ub<?php echo $row['id']; ?>" class="btn btn-success"
-                                                    onclick="blockComingSoonFilm(<?php echo $row['id']; ?>);">Unblock</button>
+                                                <button id="ub<?php echo $select_data['id']; ?>" class="btn btn-success"
+                                                    onclick="blockComingSoonFilm(<?php echo $select_data['id']; ?>);">Unblock</button>
                                                 <?php
                                             }
-
                                             ?>
                                         </th>
                                     </tr>
