@@ -13,6 +13,8 @@ session_start();
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="signUp&in.css" />
     <link rel="stylesheet" href="bootstrap.css" />
+    <link rel="icon" href="images/FUX.png" />
+
     <title>Contact Page</title>
 </head>
 

@@ -17,6 +17,8 @@ if (isset($_SESSION["u"])) {
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="bootstrap.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="icon" href="images/FUX.png" />
+
         <title>All User Details</title>
     </head>
 

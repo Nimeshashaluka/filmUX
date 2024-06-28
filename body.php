@@ -14,6 +14,7 @@ require "connection.php";
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="bootstrap.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" href="images/FUX.png" />
 
 </head>
 
@@ -23,9 +24,9 @@ require "connection.php";
             <nav class="navbar text-center">
                 <div class="container-fluid body-title mb-2">
                     <h1 class="text-light body-h1">New Arrival</h1>
-                    <form action="index.php" class="d-flex col-12 col-lg-5 col-md-6" role="search" method="get">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                            id="search_input" name="search">
+                    <div class="d-flex col-12 col-lg-5 col-md-6">
+                        <input class="form-control me-2"  placeholder="Search" 
+                            id="search_input">
 
                         <select class="form-select btn btn-outline-danger me-2" style="max-width: 90px;"
                             id="search_select">
@@ -41,7 +42,6 @@ require "connection.php";
 
                                 <option value="<?php echo $category_data["c_id"]; ?>">
                                     <?php echo $category_data["ct_name"]; ?>
-
                                 </option>
 
                                 <?php
@@ -50,8 +50,8 @@ require "connection.php";
                             ?>
 
                         </select>
-                        <button type="submit" name="search" class="btn btn-outline-danger" onclick="searchBtn(0);">Search</button>
-                    </form>
+                        <button  class="btn btn-outline-danger" onclick="searchBtn(0);">Search</button>
+                        </div>
                 </div>
             </nav>
 
@@ -80,7 +80,7 @@ require "connection.php";
 
                                     <?php
 
-                                    $film_rs = Database::search("SELECT * FROM `film` WHERE `category_c_id`='" . $category_data2["c_id"] . "' ORDER BY `date` DESC LIMIT 6 OFFSET 0");
+                                    $film_rs = Database::search("SELECT * FROM `film` WHERE `category_c_id`='" . $category_data2["c_id"] . "' AND `status_status_id`='1' ORDER BY `date` DESC LIMIT 6 OFFSET 0");
 
                                     $film_num = $film_rs->num_rows;
 

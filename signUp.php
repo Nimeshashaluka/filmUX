@@ -6,24 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap.css" />
     <link rel="stylesheet" href="signUp&in.css" />
+    <link rel="icon" href="images/FUX.png" />
 
     <title>Sign Up Page</title>
 </head>
 
 <body class="body-img">
 
-<!-- 
-    <div class="col-12 d-none" id="msgdiv" style="position: absolute;">
-        <div class="alert alert-danger" role="alert" id="msg">
-
-        </div>
-    </div> -->
-
     <div class="col-12 d-none"style="position: absolute;display:flex; align-items: end; justify-content: end;" id="msgdiv">
         <div class="col-12">
             <div class="alert alert-warning alert-dismissible fade show" role="alert" id="msg">
-                <!-- <strong >Complete this as this is very important.</strong>  -->
-                <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
+               
             </div>
         </div>
 

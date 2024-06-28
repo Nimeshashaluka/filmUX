@@ -14,7 +14,8 @@ if (empty($typePassword)) {
 } else if (empty($typeVeCode)) {
     echo ("Please enter your Verification Code");
 } else {
-    Database::iud("UPDATE `user` SET `password`='" . $typePassword . "' WHERE `v_code`='" . $typeVeCode . "'");
+    Database::iud("UPDATE `user` SET `password`='" . $typePassword . "' 
+    WHERE `v_code`='" . $typeVeCode . "'");
 
     echo("Success");
 

@@ -21,6 +21,8 @@ if (isset($_SESSION["u"])) {
             <link rel="stylesheet" href="style.css" />
             <link rel="stylesheet" href="bootstrap.css" />
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+            <link rel="icon" href="images/FUX.png" />
+
             <title>FILM DETAILS UPDATE</title>
         </head>
 
@@ -99,63 +101,60 @@ if (isset($_SESSION["u"])) {
                                 </div>
 
                                 <div class="row p-2">
-                                    <label for="recipient-name" class="col-form-label">Category</label>
-                                    <select class="form-control" id="select">
-                                        <option value="<?php echo $film['c_id']; ?>">
-                                            <?php echo $film['ct_name']; ?>
-                                        </option>
 
+                                    <div class="col">
+                                        <label for="formGroupExampleInput" class="form-label">Description</label>
+                                        <input type="text" class="form-control" placeholder="First name"
+                                            value="<?php echo $film['description']; ?>" id="descrip" style="height: 80px;">
+                                    </div>
 
-                                        <?php
-                                        $category_rs = Database::search("SELECT * FROM category");
-                                        $category_num = $category_rs->num_rows;
-
-                                        for ($x = 0; $x < $category_num; $x++) {
-                                            $category_data = $category_rs->fetch_assoc();
-                                            ?>
-
-                                            <option value="<?php echo $category_data["c_id"]; ?>">
-                                                <?php echo $category_data["ct_name"]; ?>
-
-                                            </option>
-
-                                            <?php
-                                        }
-
-                                        ?>
-
-                                    </select>
                                 </div>
 
                                 <div class="row my-4">
                                     <div class="col">
-                                        <label for="formGroupExampleInput" class="form-label">Description</label>
-                                        <input type="text" class="form-control" placeholder="First name"
-                                            value="<?php echo $film['description']; ?>" id="descrip"
-                                            style="height: 100px;">
-                                    </div>
+                                        <label for="recipient-name" class="col-form-label">Category</label>
+                                        <select class="form-control" id="select">
+                                            <option value="<?php echo $film['c_id']; ?>">
+                                                <?php echo $film['ct_name']; ?>
+                                            </option>
 
+
+                                            <?php
+                                            $category_rs = Database::search("SELECT * FROM category");
+                                            $category_num = $category_rs->num_rows;
+
+                                            for ($x = 0; $x < $category_num; $x++) {
+                                                $category_data = $category_rs->fetch_assoc();
+                                                ?>
+
+                                                <option value="<?php echo $category_data["c_id"]; ?>">
+                                                    <?php echo $category_data["ct_name"]; ?>
+
+                                                </option>
+
+                                                <?php
+                                            }
+
+                                            ?>
+
+                                        </select>
+                                    </div>
                                     <div class="col">
                                         <label for="formGroupExampleInput" class="form-label">Film Image</label>
 
-                                        <input type="text" class="form-control" placeholder="Image"
-                                            value="<?php echo $film['img_path']; ?>" >
+                                        <input type="file" class="form-control my-2" id="editImage"
+                                            value="<?php echo $film['img_path']; ?>">
 
-                                        <input type="file" class="form-control my-2"
-                                            value="<?php echo $film['img_path']; ?>" >
-
-                                        <button class="btn btn-warning my-2">Save Image</button>
+                                        <!-- <button class="btn btn-warning my-2" onclick="updateSaveImg();">Save Image</button> -->
                                     </div>
-
-
-
                                 </div>
 
 
 
                                 <div class="row">
                                     <div class="d-grid gap-2">
-                                        <button class="btn btn-success btn-lg" type="button" onclick="updateFilm();">Update Details</button>
+                                        <button class="btn btn-success btn-lg" type="button" onclick="updateFilm();">Update
+                                            Details</button>
                                     </div>
 
                                 </div>
